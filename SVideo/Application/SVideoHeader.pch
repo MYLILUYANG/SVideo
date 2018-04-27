@@ -1,0 +1,35 @@
+//
+//  SVideoHeader.pch
+//  SVideo
+//
+//  Created by liluyang on 2017/11/25.
+//  Copyright © 2017年 SVideo. All rights reserved.
+//
+
+#ifndef SVideoHeader_pch
+#define SVideoHeader_pch
+
+
+#ifdef __IPHONE_5_0
+
+#warning "This project use features only available in iOS 5.0 and later."
+
+#endif
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+
+#import "SMacroHelper.h"
+#import "SEnumHeader.h"
+#import "SURLHeader.h"
+#import <MJRefresh/MJRefresh.h>
+#import <Masonry/Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
+
+#endif
+
+#endif /* SVideoHeader_pch */
