@@ -235,4 +235,9 @@
     return _videosArray;
 }
 
+-(void)dealloc
+{
+    
+}
+
 @end

@@ -25,6 +25,9 @@
 		DE5F71761FC7114500990BAB /* SVideoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5F71751FC7114500990BAB /* SVideoUITests.m */; };
 		DE8A9B971FD6A5B900B9E7C6 /* SPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */; };
 		DE8A9B9B1FD6A71000B9E7C6 /* STabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8A9B9A1FD6A71000B9E7C6 /* STabBarController.m */; };
+		DECC0AEF209AEA10005A549C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */; };
+		DECC0AF5209AF608005A549C /* SEditVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC0AF4209AF608005A549C /* SEditVideoViewController.m */; };
+		DECC0AFC209B1B70005A549C /* SEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC0AFB209B1B70005A549C /* SEditView.m */; };
 		DEFAD2251FD7F4C200AFC828 /* SHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFAD2241FD7F4C200AFC828 /* SHomeModel.m */; };
 		DEFAD2281FD8092300AFC828 /* SHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFAD2271FD8092300AFC828 /* SHomeCell.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +88,11 @@
 		DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPublishController.m; sourceTree = "<group>"; };
 		DE8A9B991FD6A71000B9E7C6 /* STabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STabBarController.h; sourceTree = "<group>"; };
 		DE8A9B9A1FD6A71000B9E7C6 /* STabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STabBarController.m; sourceTree = "<group>"; };
+		DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DECC0AF3209AF608005A549C /* SEditVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEditVideoViewController.h; sourceTree = "<group>"; };
+		DECC0AF4209AF608005A549C /* SEditVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEditVideoViewController.m; sourceTree = "<group>"; };
+		DECC0AFA209B1B70005A549C /* SEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEditView.h; sourceTree = "<group>"; };
+		DECC0AFB209B1B70005A549C /* SEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEditView.m; sourceTree = "<group>"; };
 		DEFAD2231FD7F4C200AFC828 /* SHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHomeModel.h; sourceTree = "<group>"; };
 		DEFAD2241FD7F4C200AFC828 /* SHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHomeModel.m; sourceTree = "<group>"; };
 		DEFAD2261FD8092300AFC828 /* SHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHomeCell.h; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECC0AEF209AEA10005A549C /* MobileCoreServices.framework in Frameworks */,
 				1CACAFF478F34FFA752B5333 /* libPods-SVideo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +139,7 @@
 		9FE30945E02ADA2F7E9F41FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */,
 				FDD09243EDB99349F74AF267 /* libPods-SVideo.a */,
 			);
 			name = Frameworks;
@@ -312,8 +322,20 @@
 			children = (
 				DE8A9B951FD6A5B900B9E7C6 /* SPublishController.h */,
 				DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */,
+				DECC0AF3209AF608005A549C /* SEditVideoViewController.h */,
+				DECC0AF4209AF608005A549C /* SEditVideoViewController.m */,
+				DECC0AF6209B17C6005A549C /* View */,
 			);
 			path = Publish;
+			sourceTree = "<group>";
+		};
+		DECC0AF6209B17C6005A549C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DECC0AFA209B1B70005A549C /* SEditView.h */,
+				DECC0AFB209B1B70005A549C /* SEditView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DEFAD21D1FD7F1A300AFC828 /* controller */ = {
@@ -535,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECC0AF5209AF608005A549C /* SEditVideoViewController.m in Sources */,
 				DE5F71561FC7114400990BAB /* ViewController.m in Sources */,
 				DEFAD2251FD7F4C200AFC828 /* SHomeModel.m in Sources */,
 				DE12048C2025A9E100375B30 /* WMPlayer.m in Sources */,
@@ -544,6 +567,7 @@
 				DE5F71531FC7114400990BAB /* AppDelegate.mm in Sources */,
 				DE57BFAE1FC8EBDB0032A08A /* SHomeController.m in Sources */,
 				DE12048B2025A9E100375B30 /* FastForwardView.m in Sources */,
+				DECC0AFC209B1B70005A549C /* SEditView.m in Sources */,
 				DE12048A2025A9E100375B30 /* WMLightView.m in Sources */,
 				DEFAD2281FD8092300AFC828 /* SHomeCell.m in Sources */,
 				DE8A9B971FD6A5B900B9E7C6 /* SPublishController.m in Sources */,

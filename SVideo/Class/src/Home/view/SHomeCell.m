@@ -142,9 +142,9 @@
 
     [self.videoPlayView addSubview:self.videoPlayer];
 
-    [self.videoPlayer setURLString:videoModel.videoUrl];
+//    [self.videoPlayer setURLString:videoModel.videoUrl];
 
-    [self.videoPlayer play];
+//    [self.videoPlayer play];
     
     self.introduceLabel.text = videoModel.videoIntroduce;
     LYLog(@"%@",videoModel.videoIntroduce);

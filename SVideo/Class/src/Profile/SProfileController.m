@@ -16,29 +16,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
+
 }
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
-    
-    CGFloat width = K_ScreenWidth;
-    CGFloat height = k_ScreenHeight;
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64 , width, height -64 + 34 )];
-    // 2.创建URL
-    NSURL *url = [NSURL URLWithString:@"https://m.tamaidan.com/personalCenter"];
-    // 3.创建Request
-    NSURLRequest *request =[NSURLRequest requestWithURL:url];
-    // 4.加载网页
-    [webView loadRequest:request];
-    // 5.最后将webView添加到界面
-    [self.view addSubview:webView];
-//    self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAlways;
-//    self.webView.scroview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever
-    self.webView = webView;
-  
+    self.view.backgroundColor = [UIColor whiteColor];
     
 }
 

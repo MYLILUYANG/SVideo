@@ -26,6 +26,11 @@
 #define k_Width(R) (R)*(K_ScreenWidth)/375 //这里的375我是针对6为标准适配的,如果需要其他标准可以修改
 #define k_Height(R) k_Width(R) 
 
+#define K_RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A ]
+#define K_RGB(R,G,B) K_RGBA(R, G, B, 1)
+
+#define K_RandColor [UIColor colorWithRed:rand()%255 / 255.0 green:rand()%255 / 255.0 blue:rand()%255 / 255.0 alpha:1]
+
 //打印
 #ifdef DEBUG
 #define LYLog(fmt, ...) NSLog(fmt, ## __VA_ARGS__)
