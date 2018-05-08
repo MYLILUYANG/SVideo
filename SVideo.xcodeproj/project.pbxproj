@@ -23,6 +23,15 @@
 		DE5F71611FC7114400990BAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5F71601FC7114400990BAB /* main.m */; };
 		DE5F716B1FC7114500990BAB /* SVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5F716A1FC7114500990BAB /* SVideoTests.m */; };
 		DE5F71761FC7114500990BAB /* SVideoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5F71751FC7114500990BAB /* SVideoUITests.m */; };
+		DE600CF3209BF65A00461DF6 /* SShootingController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE600CF2209BF65A00461DF6 /* SShootingController.m */; };
+		DE600CF6209BF7AB00461DF6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE600CF5209BF7AB00461DF6 /* OpenGLES.framework */; };
+		DE600CF8209BF7B400461DF6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE600CF7209BF7B400461DF6 /* QuartzCore.framework */; };
+		DE600CFA209BF7BC00461DF6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE600CF9209BF7BB00461DF6 /* AVFoundation.framework */; };
+		DE600CFC209BF7C300461DF6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE600CFB209BF7C300461DF6 /* CoreVideo.framework */; };
+		DE600CFE209BF7CB00461DF6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE600CFD209BF7CB00461DF6 /* CoreMedia.framework */; };
+		DE600D00209BF7DB00461DF6 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE600CFF209BF7DB00461DF6 /* libGPUImage.a */; };
+		DE600D05209BFC5C00461DF6 /* SFilterSelView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE600D04209BFC5C00461DF6 /* SFilterSelView.m */; };
+		DE600D09209BFD9500461DF6 /* SFilterArray.m in Sources */ = {isa = PBXBuildFile; fileRef = DE600D08209BFD9500461DF6 /* SFilterArray.m */; };
 		DE8A9B971FD6A5B900B9E7C6 /* SPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */; };
 		DE8A9B9B1FD6A71000B9E7C6 /* STabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8A9B9A1FD6A71000B9E7C6 /* STabBarController.m */; };
 		DECC0AEF209AEA10005A549C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */; };
@@ -83,6 +92,18 @@
 		DE5F71711FC7114500990BAB /* SVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5F71751FC7114500990BAB /* SVideoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVideoUITests.m; sourceTree = "<group>"; };
 		DE5F71771FC7114500990BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE600CF1209BF65A00461DF6 /* SShootingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SShootingController.h; sourceTree = "<group>"; };
+		DE600CF2209BF65A00461DF6 /* SShootingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SShootingController.m; sourceTree = "<group>"; };
+		DE600CF5209BF7AB00461DF6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		DE600CF7209BF7B400461DF6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DE600CF9209BF7BB00461DF6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DE600CFB209BF7C300461DF6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		DE600CFD209BF7CB00461DF6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		DE600CFF209BF7DB00461DF6 /* libGPUImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGPUImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE600D03209BFC5C00461DF6 /* SFilterSelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFilterSelView.h; sourceTree = "<group>"; };
+		DE600D04209BFC5C00461DF6 /* SFilterSelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFilterSelView.m; sourceTree = "<group>"; };
+		DE600D07209BFD9500461DF6 /* SFilterArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFilterArray.h; sourceTree = "<group>"; };
+		DE600D08209BFD9500461DF6 /* SFilterArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFilterArray.m; sourceTree = "<group>"; };
 		DE7632FE1FC969B200F4AE16 /* SVideoHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVideoHeader.pch; sourceTree = "<group>"; };
 		DE8A9B951FD6A5B900B9E7C6 /* SPublishController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPublishController.h; sourceTree = "<group>"; };
 		DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPublishController.m; sourceTree = "<group>"; };
@@ -105,6 +126,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE600D00209BF7DB00461DF6 /* libGPUImage.a in Frameworks */,
+				DE600CFE209BF7CB00461DF6 /* CoreMedia.framework in Frameworks */,
+				DE600CFC209BF7C300461DF6 /* CoreVideo.framework in Frameworks */,
+				DE600CFA209BF7BC00461DF6 /* AVFoundation.framework in Frameworks */,
+				DE600CF8209BF7B400461DF6 /* QuartzCore.framework in Frameworks */,
+				DE600CF6209BF7AB00461DF6 /* OpenGLES.framework in Frameworks */,
 				DECC0AEF209AEA10005A549C /* MobileCoreServices.framework in Frameworks */,
 				1CACAFF478F34FFA752B5333 /* libPods-SVideo.a in Frameworks */,
 			);
@@ -139,6 +166,12 @@
 		9FE30945E02ADA2F7E9F41FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE600CFF209BF7DB00461DF6 /* libGPUImage.a */,
+				DE600CFD209BF7CB00461DF6 /* CoreMedia.framework */,
+				DE600CFB209BF7C300461DF6 /* CoreVideo.framework */,
+				DE600CF9209BF7BB00461DF6 /* AVFoundation.framework */,
+				DE600CF7209BF7B400461DF6 /* QuartzCore.framework */,
+				DE600CF5209BF7AB00461DF6 /* OpenGLES.framework */,
 				DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */,
 				FDD09243EDB99349F74AF267 /* libPods-SVideo.a */,
 			);
@@ -317,6 +350,15 @@
 			path = SVideoUITests;
 			sourceTree = "<group>";
 		};
+		DE600D06209BFD6500461DF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE600D07209BFD9500461DF6 /* SFilterArray.h */,
+				DE600D08209BFD9500461DF6 /* SFilterArray.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DE8A9B941FD6A58800B9E7C6 /* Publish */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +366,9 @@
 				DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */,
 				DECC0AF3209AF608005A549C /* SEditVideoViewController.h */,
 				DECC0AF4209AF608005A549C /* SEditVideoViewController.m */,
+				DE600CF1209BF65A00461DF6 /* SShootingController.h */,
+				DE600CF2209BF65A00461DF6 /* SShootingController.m */,
+				DE600D06209BFD6500461DF6 /* Model */,
 				DECC0AF6209B17C6005A549C /* View */,
 			);
 			path = Publish;
@@ -334,6 +379,8 @@
 			children = (
 				DECC0AFA209B1B70005A549C /* SEditView.h */,
 				DECC0AFB209B1B70005A549C /* SEditView.m */,
+				DE600D03209BFC5C00461DF6 /* SFilterSelView.h */,
+				DE600D04209BFC5C00461DF6 /* SFilterSelView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,7 +423,6 @@
 				DE5F714A1FC7114400990BAB /* Sources */,
 				DE5F714B1FC7114400990BAB /* Frameworks */,
 				DE5F714C1FC7114400990BAB /* Resources */,
-				8F12B1889BCDF8A9B1CBF324 /* [CP] Embed Pods Frameworks */,
 				5551CAB6F1F618EA703E0EB5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -506,11 +552,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SVideo/Pods-SVideo-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,21 +591,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F12B1889BCDF8A9B1CBF324 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SVideo/Pods-SVideo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -560,12 +601,15 @@
 				DECC0AF5209AF608005A549C /* SEditVideoViewController.m in Sources */,
 				DE5F71561FC7114400990BAB /* ViewController.m in Sources */,
 				DEFAD2251FD7F4C200AFC828 /* SHomeModel.m in Sources */,
+				DE600D05209BFC5C00461DF6 /* SFilterSelView.m in Sources */,
+				DE600D09209BFD9500461DF6 /* SFilterArray.m in Sources */,
 				DE12048C2025A9E100375B30 /* WMPlayer.m in Sources */,
 				DE57BFB81FC8FE130032A08A /* SProfileController.m in Sources */,
 				DE8A9B9B1FD6A71000B9E7C6 /* STabBarController.m in Sources */,
 				DE5F71611FC7114400990BAB /* main.m in Sources */,
 				DE5F71531FC7114400990BAB /* AppDelegate.mm in Sources */,
 				DE57BFAE1FC8EBDB0032A08A /* SHomeController.m in Sources */,
+				DE600CF3209BF65A00461DF6 /* SShootingController.m in Sources */,
 				DE12048B2025A9E100375B30 /* FastForwardView.m in Sources */,
 				DECC0AFC209B1B70005A549C /* SEditView.m in Sources */,
 				DE12048A2025A9E100375B30 /* WMLightView.m in Sources */,

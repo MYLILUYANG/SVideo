@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FLKAutoLayout (0.2.1)
+  - GPUImage (0.1.7)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
   - ORStackView (3.0.1):
@@ -25,19 +26,31 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - GPUImage (~> 0.1.7)
   - Masonry (~> 1.0.2)
   - MJRefresh (~> 3.1.12)
   - ORStackView (~> 3.0)
   - SDWebImage (~> 4.0.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - FLKAutoLayout
+    - GPUImage
+    - Masonry
+    - MJRefresh
+    - ORStackView
+    - SDWebImage
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 9d4fd35badacbb496744c4ed6c847c8851300234
+PODFILE CHECKSUM: 7535db55974a8a49ac6df253b3082eb202cf4af7
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.5.0

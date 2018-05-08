@@ -1,5 +1,6 @@
 platform :ios, '8.0'
 def pods
+  pod 'GPUImage', '~> 0.1.7'
   pod 'SDWebImage', '~> 4.0.0'
   pod 'AFNetworking', '~> 3.1.0'
   pod 'MJRefresh', '~> 3.1.12'

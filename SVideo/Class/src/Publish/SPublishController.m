@@ -9,6 +9,7 @@
 #import "SPublishController.h"
 #import "SEditVideoViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "SShootingController.h"
 @interface SPublishController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
@@ -18,6 +19,12 @@
 @end
 
 @implementation SPublishController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -123,8 +130,9 @@
 
 -(void)selBtnAction:(UIButton *)sender
 {
-    NSLog(@"%s",__func__);
-    
+    SShootingController *controller = [[SShootingController alloc] init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];   
 }
 
 -(void)photoBtnBtnAction:(UIButton *)sender
