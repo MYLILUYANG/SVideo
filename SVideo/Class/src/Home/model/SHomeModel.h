@@ -31,5 +31,8 @@
 @property (nonatomic, assign) NSInteger videoTag;
 
 
+@property (nonatomic, strong) NSString *testImageStr;
+
+@property (nonatomic, assign) BOOL isPlay;
 
 @end

@@ -10,4 +10,6 @@
 #define SEnumHeader_h
 
 
+#import "UIImage+Extension.h"
+
 #endif /* SEnumHeader_h */

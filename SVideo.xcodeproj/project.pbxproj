@@ -13,6 +13,7 @@
 		DE12048A2025A9E100375B30 /* WMLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1204852025A9E100375B30 /* WMLightView.m */; };
 		DE12048B2025A9E100375B30 /* FastForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1204862025A9E100375B30 /* FastForwardView.m */; };
 		DE12048C2025A9E100375B30 /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1204872025A9E100375B30 /* WMPlayer.m */; };
+		DE44423B2284314500466DF3 /* SCustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DE44423A2284314500466DF3 /* SCustomLayout.m */; };
 		DE57BFAE1FC8EBDB0032A08A /* SHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE57BFAD1FC8EBDB0032A08A /* SHomeController.m */; };
 		DE57BFB81FC8FE130032A08A /* SProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE57BFB71FC8FE130032A08A /* SProfileController.m */; };
 		DE5F71531FC7114400990BAB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DE5F71521FC7114400990BAB /* AppDelegate.mm */; };
@@ -34,9 +35,11 @@
 		DE600D09209BFD9500461DF6 /* SFilterArray.m in Sources */ = {isa = PBXBuildFile; fileRef = DE600D08209BFD9500461DF6 /* SFilterArray.m */; };
 		DE8A9B971FD6A5B900B9E7C6 /* SPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */; };
 		DE8A9B9B1FD6A71000B9E7C6 /* STabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8A9B9A1FD6A71000B9E7C6 /* STabBarController.m */; };
+		DEA4DDEF20A1932000FCEC01 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA4DDED20A1931F00FCEC01 /* GPUImageBeautifyFilter.m */; };
 		DECC0AEF209AEA10005A549C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */; };
 		DECC0AF5209AF608005A549C /* SEditVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC0AF4209AF608005A549C /* SEditVideoViewController.m */; };
 		DECC0AFC209B1B70005A549C /* SEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECC0AFB209B1B70005A549C /* SEditView.m */; };
+		DEE90F232285654800802818 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE90F222285654800802818 /* UIImage+Extension.m */; };
 		DEFAD2251FD7F4C200AFC828 /* SHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFAD2241FD7F4C200AFC828 /* SHomeModel.m */; };
 		DEFAD2281FD8092300AFC828 /* SHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFAD2271FD8092300AFC828 /* SHomeCell.m */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,8 @@
 		DE1204852025A9E100375B30 /* WMLightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLightView.m; sourceTree = "<group>"; };
 		DE1204862025A9E100375B30 /* FastForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastForwardView.m; sourceTree = "<group>"; };
 		DE1204872025A9E100375B30 /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
+		DE4442392284314500466DF3 /* SCustomLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCustomLayout.h; sourceTree = "<group>"; };
+		DE44423A2284314500466DF3 /* SCustomLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCustomLayout.m; sourceTree = "<group>"; };
 		DE57BFAC1FC8EBDB0032A08A /* SHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHomeController.h; sourceTree = "<group>"; };
 		DE57BFAD1FC8EBDB0032A08A /* SHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHomeController.m; sourceTree = "<group>"; };
 		DE57BFB61FC8FE130032A08A /* SProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SProfileController.h; sourceTree = "<group>"; };
@@ -109,11 +114,15 @@
 		DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPublishController.m; sourceTree = "<group>"; };
 		DE8A9B991FD6A71000B9E7C6 /* STabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STabBarController.h; sourceTree = "<group>"; };
 		DE8A9B9A1FD6A71000B9E7C6 /* STabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STabBarController.m; sourceTree = "<group>"; };
+		DEA4DDED20A1931F00FCEC01 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		DEA4DDEE20A1932000FCEC01 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
 		DECC0AEE209AEA0F005A549C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DECC0AF3209AF608005A549C /* SEditVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEditVideoViewController.h; sourceTree = "<group>"; };
 		DECC0AF4209AF608005A549C /* SEditVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEditVideoViewController.m; sourceTree = "<group>"; };
 		DECC0AFA209B1B70005A549C /* SEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEditView.h; sourceTree = "<group>"; };
 		DECC0AFB209B1B70005A549C /* SEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEditView.m; sourceTree = "<group>"; };
+		DEE90F212285654800802818 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		DEE90F222285654800802818 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		DEFAD2231FD7F4C200AFC828 /* SHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHomeModel.h; sourceTree = "<group>"; };
 		DEFAD2241FD7F4C200AFC828 /* SHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHomeModel.m; sourceTree = "<group>"; };
 		DEFAD2261FD8092300AFC828 /* SHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHomeCell.h; sourceTree = "<group>"; };
@@ -201,6 +210,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DE4442382284312100466DF3 /* CustomLayout */ = {
+			isa = PBXGroup;
+			children = (
+				DE4442392284314500466DF3 /* SCustomLayout.h */,
+				DE44423A2284314500466DF3 /* SCustomLayout.m */,
+			);
+			path = CustomLayout;
+			sourceTree = "<group>";
+		};
 		DE57BFA21FC8E72E0032A08A /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +232,7 @@
 		DE57BFA31FC8E74C0032A08A /* common */ = {
 			isa = PBXGroup;
 			children = (
+				DE4442382284312100466DF3 /* CustomLayout */,
 				DE57BFA51FC8E7830032A08A /* STabBar */,
 				DE57BFC11FC92FEB0032A08A /* SCommonUntils */,
 			);
@@ -223,6 +242,8 @@
 		DE57BFA41FC8E7540032A08A /* category */ = {
 			isa = PBXGroup;
 			children = (
+				DEE90F212285654800802818 /* UIImage+Extension.h */,
+				DEE90F222285654800802818 /* UIImage+Extension.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -362,6 +383,7 @@
 		DE8A9B941FD6A58800B9E7C6 /* Publish */ = {
 			isa = PBXGroup;
 			children = (
+				DEA4DDEC20A1930800FCEC01 /* SFilter */,
 				DE8A9B951FD6A5B900B9E7C6 /* SPublishController.h */,
 				DE8A9B961FD6A5B900B9E7C6 /* SPublishController.m */,
 				DECC0AF3209AF608005A549C /* SEditVideoViewController.h */,
@@ -372,6 +394,15 @@
 				DECC0AF6209B17C6005A549C /* View */,
 			);
 			path = Publish;
+			sourceTree = "<group>";
+		};
+		DEA4DDEC20A1930800FCEC01 /* SFilter */ = {
+			isa = PBXGroup;
+			children = (
+				DEA4DDEE20A1932000FCEC01 /* GPUImageBeautifyFilter.h */,
+				DEA4DDED20A1931F00FCEC01 /* GPUImageBeautifyFilter.m */,
+			);
+			path = SFilter;
 			sourceTree = "<group>";
 		};
 		DECC0AF6209B17C6005A549C /* View */ = {
@@ -607,12 +638,15 @@
 				DE57BFB81FC8FE130032A08A /* SProfileController.m in Sources */,
 				DE8A9B9B1FD6A71000B9E7C6 /* STabBarController.m in Sources */,
 				DE5F71611FC7114400990BAB /* main.m in Sources */,
+				DEA4DDEF20A1932000FCEC01 /* GPUImageBeautifyFilter.m in Sources */,
 				DE5F71531FC7114400990BAB /* AppDelegate.mm in Sources */,
 				DE57BFAE1FC8EBDB0032A08A /* SHomeController.m in Sources */,
 				DE600CF3209BF65A00461DF6 /* SShootingController.m in Sources */,
 				DE12048B2025A9E100375B30 /* FastForwardView.m in Sources */,
 				DECC0AFC209B1B70005A549C /* SEditView.m in Sources */,
+				DEE90F232285654800802818 /* UIImage+Extension.m in Sources */,
 				DE12048A2025A9E100375B30 /* WMLightView.m in Sources */,
+				DE44423B2284314500466DF3 /* SCustomLayout.m in Sources */,
 				DEFAD2281FD8092300AFC828 /* SHomeCell.m in Sources */,
 				DE8A9B971FD6A5B900B9E7C6 /* SPublishController.m in Sources */,
 			);

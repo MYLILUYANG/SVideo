@@ -10,11 +10,15 @@
 #import "SHomeCell.h"
 #import "SHomeModel.h"
 #import "WMPlayer.h"
+#import "SCustomLayout.h"
+#define kAngleMuti  180
 @interface SHomeController ()<UICollectionViewDelegate, UICollectionViewDataSource, SHomeDelegate, WMPlayerDelegate,WMPlayerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UICollectionView *baseCollectionView;
 @property (nonatomic, strong) NSMutableArray *videosArray;
+@property (assign,nonatomic)CGFloat angle;
+@property (assign,nonatomic)CGPoint originalCenter;
 /**
  视频播放类
  */
@@ -26,21 +30,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self loadData:1];
+    [self loadData:1];
     [self setupView];
+    
 }
 
 -(void)setupView
 {
+    self.view.backgroundColor = K_RandColor;
+    
     self.navigationController.navigationBarHidden = YES;
 //    self.baseCollectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.baseCollectionView];
 //上拉下拉 刷新加载
-    MJRefreshBackNormalFooter *refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerReload)];
-    self.baseCollectionView.mj_footer = refreshFooter;
-    MJRefreshNormalHeader *refreshHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerReload)];
-    self.baseCollectionView.mj_header = refreshHeader;
-    [self.baseCollectionView.mj_header beginRefreshing];
+//    MJRefreshBackNormalFooter *refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerReload)];
+//    self.baseCollectionView.mj_footer = refreshFooter;
+//    MJRefreshNormalHeader *refreshHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerReload)];
+//    self.baseCollectionView.mj_header = refreshHeader;
+//    [self.baseCollectionView.mj_header beginRefreshing];
 }
 
 #pragma mark - SHomeDelegate
@@ -78,12 +85,14 @@
     
     NSString *videoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
     NSString *userHeader = @"https://img.qq1234.org/uploads/allimg/140818/3_140818171934_4.jpg";
-    
-    for (int i = 0; i <= 10; i++) {
+    NSString *testImage = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557479435009&di=3874267457dbb3fed40958334ac90185&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F17bd4b72f4d43662b65b94eb0d61b6ac7bb7d9d323ba2-XMM11S_fw658";
+    for (int i = 0; i <= 100; i++) {
 
         SHomeModel *model = [[SHomeModel alloc] init];
         model.videoUrl = videoUrl;
+        model.isPlay = false;
         model.userHeader = userHeader;
+        model.testImageStr = testImage;
         model.videoIntroduce = [NSString stringWithFormat:@"%d ++++++++%d",arc4random() ,i];
         [self.videosArray addObject:model];
     }
@@ -104,34 +113,80 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SHomeCell *cell = [SHomeCell collectionViewWithIndexpath:indexPath collectionView:collectionView];
-
+    SHomeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"customCollectionCellId" forIndexPath:indexPath];
     cell.videoModel = self.videosArray[indexPath.row];
     cell.delegate = self;
-
-//    LYLog(@"indexPath.section = %ldindexPath.row = %ld",indexPath.section,indexPath.row);
+    self.originalCenter = cell.center;
+    [cell addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pan:)]];
     
-    LYLog(@" 每次加载cell");
-    
-    
-//    [collectionView selectItemAtIndexPath:[NSIndexPath indexPathWithIndex:indexPath.row - 1] animated:YES scrollPosition:UICollectionViewScrollPositionTop];
-    
-//    [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.row - 1 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionTop];
+//    NSLog(@"%ld",indexPath.item);
     
     
-//    if (_videoPlayer && _videoPlayer.superview) {
-//        [self.videoPlayer removeFromSuperview];
-//    }
-//    
-//    [cell.videoPlayView addSubview:self.videoPlayer];
-//    
-//    SHomeModel *model = self.videosArray[indexPath.row];
-//    
-//    [self.videoPlayer setURLString:model.videoUrl];
-
+    
+    
+    
     return cell;
 }
 
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"%s",__func__);
+//}
+//
+//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"%s",__func__);
+//}
+
+//-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
+//    NSLog(@"%s",__func__);
+//
+//
+//
+//}
+
+
+
+
+
+-(void)pan:(UIPanGestureRecognizer *)pan{
+//    NSLog(@"%s",__func__);
+    
+    SHomeCell *cell = (SHomeCell*)pan.view;
+    
+    NSIndexPath *indexpath = [self.baseCollectionView indexPathForCell:cell];
+//    NSLog(@"%ld",indexpath.row);
+    if (indexpath.row >0) {
+//       只能拖拽第一张图片
+        return;
+    }
+    if (pan.state == UIGestureRecognizerStateChanged) {
+
+        CGPoint movePoint = [pan translationInView:self.baseCollectionView];
+        cell.center = CGPointMake(cell.center.x + movePoint.x, cell.center.y + movePoint.y);
+        _angle = (cell.center.x - cell.frame.size.width * 0.5) / cell.frame.size.width * 0.5;
+        cell.transform = CGAffineTransformMakeRotation(_angle);
+        [pan setTranslation:CGPointZero inView:self.baseCollectionView];
+        
+        
+    }else if (pan.state == UIGestureRecognizerStateEnded){
+
+        if (ABS(_angle * kAngleMuti) >= 30) {
+            [self.videosArray removeObjectAtIndex:indexpath.item];
+            [self.baseCollectionView deleteItemsAtIndexPaths:@[indexpath]];
+        }
+        else{
+            [UIView animateWithDuration:0.5 animations:^{
+                cell.center = self.originalCenter;
+                cell.transform = CGAffineTransformMakeRotation(0);
+            }];
+        }
+        
+    }
+    
+    
+    
+}
 
 #pragma mark - WMPlayerDelegate
 ///播放器事件
@@ -192,21 +247,14 @@
 
 -(UICollectionView *)baseCollectionView{
     if (!_baseCollectionView) {
-    
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        
-        flowLayout.itemSize = CGSizeMake(K_ScreenWidth, k_ScreenHeight);
-        flowLayout.minimumLineSpacing = 0;
-        flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.sectionInset = UIEdgeInsetsMake(1, 0, 1, 0);
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+
+        SCustomLayout *flowLayout = [[SCustomLayout alloc] init];
+//        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _baseCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, K_ScreenWidth, k_ScreenHeight) collectionViewLayout:flowLayout];
-        _baseCollectionView.pagingEnabled = YES;
+        _baseCollectionView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1];
         _baseCollectionView.delegate = self;
         _baseCollectionView.dataSource = self;
-        _baseCollectionView.showsVerticalScrollIndicator = false;
-        _baseCollectionView.showsHorizontalScrollIndicator = false;
-        [_baseCollectionView registerClass:[SHomeCell class] forCellWithReuseIdentifier:@"homeCellid"];
+        [_baseCollectionView registerClass:[SHomeCell class] forCellWithReuseIdentifier:@"customCollectionCellId"];
     }
     return _baseCollectionView;
 }

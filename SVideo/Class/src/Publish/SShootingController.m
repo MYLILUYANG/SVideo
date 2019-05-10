@@ -9,6 +9,7 @@
 #import "SShootingController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "SFilterSelView.h"
+#import "GPUImageBeautifyFilter.h"
 #define FilterViewHeight k_Height(95)
 @interface SShootingController ()
 {
@@ -21,7 +22,7 @@
 @property(nonatomic,strong) GPUImageView * filterView;
 @property (nonatomic,retain) GPUImageMovieWriter *writer;
 @property (nonatomic,retain) GPUImageOutput<GPUImageInput> *filter;
-
+@property (nonatomic, strong) UIButton *beautifulBtn;
 @end
 
 @implementation SShootingController
@@ -36,12 +37,13 @@
     _filterView.frame = self.view.bounds;
     [self.view addSubview:_filterView];
     
-    _camera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
+    _camera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
     
     _camera.outputImageOrientation = UIInterfaceOrientationPortrait;
     _camera.horizontallyMirrorRearFacingCamera = false;
-    _camera.horizontallyMirrorFrontFacingCamera = false;
-    
+    _camera.horizontallyMirrorFrontFacingCamera = YES;
+    [_camera addAudioInputsAndOutputs];
+//    self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     if (self.filter) {
         [self.camera addTarget:self.filter];
         [self.filter addTarget:_filterView];
@@ -68,6 +70,11 @@
 }
 
 -(void)setupUI{
+    
+    UIProgressView *progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, k_Height(100), K_ScreenWidth, 10)];
+    
+    [self.view addSubview:progressView];
+
     self.movieButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.movieButton.layer.borderWidth  = 2;
     self.movieButton.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -84,11 +91,46 @@
         make.centerX.mas_equalTo(self.view.mas_centerX);
     }];
     
+    _beautifulBtn = [[UIButton alloc] init];
+    [_beautifulBtn setTitle:@"美颜" forState:UIControlStateNormal];
+    [_beautifulBtn setTitle:@"关美颜" forState:UIControlStateSelected];
+    _beautifulBtn.backgroundColor = [UIColor redColor];
+    _beautifulBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [_beautifulBtn addTarget:self action:@selector(beautifulAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:_beautifulBtn];
+    
     UIButton * back = [UIButton buttonWithType:0];
     back.backgroundColor = [UIColor redColor];
     back.frame = CGRectMake(k_Height(15), k_Height(20), k_Height(40), k_Height(40));
     [back addTarget:self action:@selector(back_toHome) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:back];
+    [_beautifulBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.equalTo([NSNumber numberWithFloat:k_Height(20)]);
+        make.right.equalTo([NSNumber numberWithFloat:-k_Height(80)]);
+        make.width.equalTo([NSNumber numberWithFloat:k_Height(50)]);
+        make.width.equalTo([NSNumber numberWithFloat:k_Height(40)]);
+        
+    }];
+}
+
+-(void)beautifulAction
+{
+    if (self.beautifulBtn.selected) {
+        self.beautifulBtn.selected = NO;
+        
+        [self.camera removeAllTargets];
+        [self.camera addTarget:self.filterView];
+        
+    }else
+    {
+        self.beautifulBtn.selected = YES;
+        [self.camera removeAllTargets];
+        GPUImageBeautifyFilter *filter = [[GPUImageBeautifyFilter alloc] init];
+        [self.camera addTarget:filter];
+        [filter addTarget:self.filterView];
+    }
 }
 
 -(void)choose_callBack:(GPUImageOutput<GPUImageInput> *)filter
@@ -113,19 +155,38 @@
         [self.filter removeTarget:self.writer];
         self.camera.audioEncodingTarget = nil;
         [self.writer finishRecording];
-        UIAlertView * alertview = [[UIAlertView alloc] initWithTitle:@"是否保存到相册" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"保存", nil];
-        [alertview show];
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否保存视频" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+           
+            
+        }] ];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *fileName = [@"Documents/" stringByAppendingFormat:@"Movie%d.m4v",(int)[[NSDate date] timeIntervalSince1970]];
+            pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:fileName];
+            NSLog(@"pathToMovie = %@",pathToMovie);
+            NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
+            self.writer = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(480.0, 640.0)];
+            self.writer.encodingLiveVideo = YES;
+            self.writer.shouldPassthroughAudio = YES;
+            self.writer.hasAudioTrack = YES;
+            [self.writer startRecording];
+            [self.filter addTarget:self.writer];
+            self.camera.audioEncodingTarget = self.writer;
+            __weak typeof(self.writer)weakWrite = self.writer;
+            [self.writer setCompletionBlock:^{
+                NSLog(@"写入完成");
+                [weakWrite finishRecording];
+            }];
+            
+//            self.navigationController pushViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#>
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
+
     }else{
-        NSString *fileName = [@"Documents/" stringByAppendingFormat:@"Movie%d.m4v",(int)[[NSDate date] timeIntervalSince1970]];
-        
-        
-        pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:fileName];
-        NSLog(@"pathToMovie = %@",pathToMovie);
-        
-        NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
-        self.writer = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(480.0, 640.0)];
-        [self.filter addTarget:self.writer];
-        self.camera.audioEncodingTarget = self.writer;
+      
         [self.writer startRecording];
         
     }
