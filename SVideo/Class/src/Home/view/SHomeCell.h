@@ -20,11 +20,13 @@
 
 @property (nonatomic, assign) id<SHomeDelegate> delegate;
 
-+(instancetype)collectionViewWithIndexpath:(NSIndexPath *)indexPath collectionView:(UICollectionView *)colletionView;
+//+(instancetype)collectionViewWithIndexpath:(NSIndexPath *)indexPath collectionView:(UICollectionView *)colletionView;
 /**
  视频播放的view
  */
 @property (nonatomic, strong) UIView *videoPlayView;
+
+-(void)play:(BOOL)play index:(NSInteger)index videoArray:(NSMutableArray *)videoArray;
 
 @end
 
@@ -33,5 +35,7 @@
 -(void)tapClickView:(SHomeCell *)cell;
 
 -(void)doubleTapClickView:(SHomeCell *)cell;
+
+
 
 @end

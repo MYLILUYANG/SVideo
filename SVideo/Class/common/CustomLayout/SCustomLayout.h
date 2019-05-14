@@ -10,4 +10,6 @@
 
 @interface SCustomLayout : UICollectionViewLayout
 
+@property (nonatomic, copy) void (^myblock)(NSInteger index);
+
 @end

@@ -23,6 +23,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - TXLiteAVSDK_Player (6.3.7088)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -31,9 +32,10 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.12)
   - ORStackView (~> 3.0)
   - SDWebImage (~> 4.0.0)
+  - TXLiteAVSDK_Player
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - FLKAutoLayout
     - GPUImage
@@ -41,6 +43,7 @@ SPEC REPOS:
     - MJRefresh
     - ORStackView
     - SDWebImage
+    - TXLiteAVSDK_Player
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -50,7 +53,8 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TXLiteAVSDK_Player: 79dff307726719163a35266ade3cb9ea815f360a
 
-PODFILE CHECKSUM: 7535db55974a8a49ac6df253b3082eb202cf4af7
+PODFILE CHECKSUM: 84733fac47afb9f6698ad3e5e40c06e48b578b21
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.1

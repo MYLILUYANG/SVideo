@@ -582,7 +582,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SVideo/Pods-SVideo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SVideo/Pods-SVideo-resources.sh",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
@@ -601,7 +601,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SVideo/Pods-SVideo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SVideo/Pods-SVideo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6E32AE3E28FEEEC9532638D7 /* [CP] Check Pods Manifest.lock */ = {

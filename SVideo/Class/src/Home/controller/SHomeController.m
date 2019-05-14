@@ -12,56 +12,82 @@
 #import "WMPlayer.h"
 #import "SCustomLayout.h"
 #define kAngleMuti  180
-@interface SHomeController ()<UICollectionViewDelegate, UICollectionViewDataSource, SHomeDelegate, WMPlayerDelegate,WMPlayerDelegate>
+#import <TXVodPlayer.h>
+#import <TXVodPlayConfig.h>
+#import <TXVodPlayListener.h>
+@interface SHomeController ()<UICollectionViewDelegate, UICollectionViewDataSource, SHomeDelegate, WMPlayerDelegate,WMPlayerDelegate, TXVodPlayListener>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UICollectionView *baseCollectionView;
 @property (nonatomic, strong) NSMutableArray *videosArray;
 @property (assign,nonatomic)CGFloat angle;
 @property (assign,nonatomic)CGPoint originalCenter;
-/**
- 视频播放类
- */
+@property (nonatomic, assign) int  cou;
+@property (nonatomic, strong) TXVodPlayer *vodPlayer;
+@property (nonatomic, strong) TXVodPlayer *vodPlayer2;
+//vodPlayer2
 
-@property (nonatomic, strong) WMPlayer *videoPlayer;
 @end
 
 @implementation SHomeController
 
+-(void) onPlayEvent:(TXVodPlayer *)player event:(int)EvtID withParam:(NSDictionary*)param
+{
+    NSLog(@"%@",param);
+}
+
+/**
+ * 网络状态通知
+ *
+ * @param player 点播对象
+ * @param param 参见TXLiveSDKTypeDef.h
+ * @see TXVodPlayer
+ */
+-(void) onNetStatus:(TXVodPlayer *)player withParam:(NSDictionary*)param
+{
+    NSLog(@"%@",param);
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadData:1];
     [self setupView];
     
 }
+-(TXVodPlayer *)vodPlayer
+{
+    if (!_vodPlayer) {
+        _vodPlayer = [TXVodPlayer new];
+        _vodPlayer.vodDelegate = self;
+        _vodPlayer.loop = YES;
+        [_vodPlayer setRenderMode:RENDER_MODE_FILL_SCREEN];
+    }
+    return _vodPlayer;
+}
+
+-(TXVodPlayer *)vodPlayer2
+{
+    if (!_vodPlayer2) {
+        _vodPlayer2 = [TXVodPlayer new];
+        _vodPlayer2.vodDelegate = self;
+        _vodPlayer2.loop = YES;
+        [_vodPlayer2 setRenderMode:RENDER_MODE_FILL_SCREEN];
+    }
+    return _vodPlayer2;
+}
 
 -(void)setupView
 {
-    self.view.backgroundColor = K_RandColor;
+    
+
+//    self.view.backgroundColor = K_RandColor;
     
     self.navigationController.navigationBarHidden = YES;
 //    self.baseCollectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.baseCollectionView];
 //上拉下拉 刷新加载
-//    MJRefreshBackNormalFooter *refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerReload)];
-//    self.baseCollectionView.mj_footer = refreshFooter;
-//    MJRefreshNormalHeader *refreshHeader = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerReload)];
-//    self.baseCollectionView.mj_header = refreshHeader;
-//    [self.baseCollectionView.mj_header beginRefreshing];
+
 }
 
-#pragma mark - SHomeDelegate
-
--(void)tapClickView:(SHomeCell *)cell
-{
-    NSLog(@"点击播放或者暂停");
-//
-}
-
--(void)doubleTapClickView:(SHomeCell *)cell
-{
-    NSLog(@"双击点赞");
-}
 
 #pragma loadData
 -(void)footerReload
@@ -86,13 +112,23 @@
     NSString *videoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
     NSString *userHeader = @"https://img.qq1234.org/uploads/allimg/140818/3_140818171934_4.jpg";
     NSString *testImage = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557479435009&di=3874267457dbb3fed40958334ac90185&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F17bd4b72f4d43662b65b94eb0d61b6ac7bb7d9d323ba2-XMM11S_fw658";
+    NSString *video2Url = @"http://tb-video.bdstatic.com/tieba-smallvideo-transcode/2148489_1c9d8082c70caa732fc0648a21be383c_1.mp4";
+    NSString *testImage2 = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557828807316&di=2cf188be8ca9e76176fb1a480b5db605&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Faaa81b417fcb146174ea24d5e541f917078068704cf9e-ia2S7b_fw658";
     for (int i = 0; i <= 100; i++) {
-
+        
         SHomeModel *model = [[SHomeModel alloc] init];
         model.videoUrl = videoUrl;
+        if (i % 2 == 1) {
+            model.videoUrl = videoUrl;
+            model.testImageStr = testImage;
+        }else{
+            model.videoUrl = video2Url;
+            model.testImageStr = testImage2;
+        }
+//        NSLog(@"%@", model.videoUrl);
         model.isPlay = false;
         model.userHeader = userHeader;
-        model.testImageStr = testImage;
+        
         model.videoIntroduce = [NSString stringWithFormat:@"%d ++++++++%d",arc4random() ,i];
         [self.videosArray addObject:model];
     }
@@ -119,46 +155,26 @@
     self.originalCenter = cell.center;
     [cell addGestureRecognizer:[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pan:)]];
     
-//    NSLog(@"%ld",indexPath.item);
-    
-    
-    
-    
-    
+    if (indexPath.item == 0) {
+        [self.vodPlayer setupVideoWidget:cell.contentView insertIndex:0];
+        SHomeModel *model = self.videosArray[0];
+        [self.vodPlayer startPlay:model.videoUrl];
+    }
     return cell;
 }
 
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSLog(@"%s",__func__);
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSLog(@"%s",__func__);
-//}
-
-//-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"%s",__func__);
-//
-//
-//
-//}
-
-
-
-
 
 -(void)pan:(UIPanGestureRecognizer *)pan{
-//    NSLog(@"%s",__func__);
-    
     SHomeCell *cell = (SHomeCell*)pan.view;
     
     NSIndexPath *indexpath = [self.baseCollectionView indexPathForCell:cell];
-//    NSLog(@"%ld",indexpath.row);
+    
+    SHomeCell *cell1 = (SHomeCell*)[self.baseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]];
+    
     if (indexpath.row >0) {
-//       只能拖拽第一张图片
+        
         return;
+        
     }
     if (pan.state == UIGestureRecognizerStateChanged) {
 
@@ -172,8 +188,25 @@
     }else if (pan.state == UIGestureRecognizerStateEnded){
 
         if (ABS(_angle * kAngleMuti) >= 30) {
+            [self.vodPlayer stopPlay];
+            [self.vodPlayer removeVideoWidget];
+            
+            
             [self.videosArray removeObjectAtIndex:indexpath.item];
             [self.baseCollectionView deleteItemsAtIndexPaths:@[indexpath]];
+            NSLog(@"%@",cell1);
+            [self.vodPlayer setupVideoWidget:cell1.contentView insertIndex:0];
+            SHomeModel *model = self.videosArray[0];
+            SHomeModel *model1 = self.videosArray[1];
+            [self.vodPlayer startPlay:model.videoUrl];
+            self.vodPlayer.config.cacheFolderPath = model1.videoUrl;
+//            self.vodPlayer.cacheFolderPath = model1.videoUrl;
+            
+        }else if (_angle * kAngleMuti <= -30){
+            
+            [self.videosArray removeObjectAtIndex:indexpath.item];
+            [self.baseCollectionView deleteItemsAtIndexPaths:@[indexpath]];
+
         }
         else{
             [UIView animateWithDuration:0.5 animations:^{
@@ -181,63 +214,8 @@
                 cell.transform = CGAffineTransformMakeRotation(0);
             }];
         }
-        
     }
-    
-    
-    
 }
-
-#pragma mark - WMPlayerDelegate
-///播放器事件
-//点击播放暂停按钮代理方法
--(void)wmplayer:(WMPlayer *)wmplayer clickedPlayOrPauseButton:(UIButton *)playOrPauseBtn
-{
-    LYLog(@"点击播放暂停按钮代理方法");
-}
-//点击关闭按钮代理方法
--(void)wmplayer:(WMPlayer *)wmplayer clickedCloseButton:(UIButton *)closeBtn
-{
-    LYLog(@"点击关闭按钮代理方法");
-}
-//点击全屏按钮代理方法
--(void)wmplayer:(WMPlayer *)wmplayer clickedFullScreenButton:(UIButton *)fullScreenBtn
-{
-    
-    LYLog(@"点击全屏按钮代理方法");
-}
-//单击WMPlayer的代理方法
--(void)wmplayer:(WMPlayer *)wmplayer singleTaped:(UITapGestureRecognizer *)singleTap
-{
-    LYLog(@"单击WMPlayer的代理方法");
-}
-//双击WMPlayer的代理方法
--(void)wmplayer:(WMPlayer *)wmplayer doubleTaped:(UITapGestureRecognizer *)doubleTap
-{
-    LYLog(@"双击WMPlayer的代理方法 增加点赞 ");
-}
-//WMPlayer的的操作栏隐藏和显示
--(void)wmplayer:(WMPlayer *)wmplayer isHiddenTopAndBottomView:(BOOL )isHidden
-{
-    LYLog(@"hidden");
-}
-///播放状态
-//播放失败的代理方法
--(void)wmplayerFailedPlay:(WMPlayer *)wmplayer WMPlayerStatus:(WMPlayerState)state
-{
-    
-}
-//准备播放的代理方法
--(void)wmplayerReadyToPlay:(WMPlayer *)wmplayer WMPlayerStatus:(WMPlayerState)state
-{
-    
-}
-//播放完毕的代理方法
--(void)wmplayerFinishedPlay:(WMPlayer *)wmplayer
-{
-    [wmplayer play];
-}
-
 
 - (void)selectItemAtIndexPath:(nullable NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition
 {
@@ -249,7 +227,6 @@
     if (!_baseCollectionView) {
 
         SCustomLayout *flowLayout = [[SCustomLayout alloc] init];
-//        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _baseCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, K_ScreenWidth, k_ScreenHeight) collectionViewLayout:flowLayout];
         _baseCollectionView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1];
         _baseCollectionView.delegate = self;
@@ -258,22 +235,6 @@
     }
     return _baseCollectionView;
 }
-
--(WMPlayer *)videoPlayer
-{
-    if (!_videoPlayer) {
-        _videoPlayer = [[WMPlayer alloc] initWithFrame:CGRectMake(0, 0, K_ScreenWidth, k_ScreenHeight)];
-        _videoPlayer.delegate = self;
-        _videoPlayer.titleLabel.hidden = YES;
-        _videoPlayer.fullScreenBtn.hidden = YES;
-        _videoPlayer.playOrPauseBtn.hidden = YES;
-        _videoPlayer.closeBtn.hidden = YES;
-        _videoPlayer.bottomView.hidden = YES;
-        
-    }
-    return _videoPlayer;
-}
-
 
 -(NSMutableArray *)videosArray
 {

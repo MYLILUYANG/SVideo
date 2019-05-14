@@ -24,7 +24,7 @@
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewLayoutAttributes * attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    
+//    NSLog(@"---------%ld",indexPath.item);
     
 //    设置布局属性
     attributes.center = CGPointMake(self.collectionView.frame.size.width * 0.5, self.collectionView.frame.size.height * 0.5 - k_Height(50));
@@ -35,12 +35,17 @@
     if (indexPath.item >=3 ) {
         attributes.hidden = YES;
     }else{
+        
         attributes.transform = CGAffineTransformMakeTranslation(0, [offsets[indexPath.item] floatValue]);
         attributes.size = CGSizeMake(k_Height(300)- [offsets[indexPath.item] floatValue], k_Height(400));
 //        zIndex越大 位置越在上边
         attributes.zIndex = [self.collectionView numberOfItemsInSection:indexPath.section] - indexPath.item;
-        NSLog(@"%ld",attributes.zIndex);
+//        NSLog(@"%ld",attributes.zIndex);
+//        NSLog(@"______________________%ld",indexPath.item);
+//
+//        NSLog(@"%@", [self.collectionView cellForItemAtIndexPath:indexPath]);
         
+//        self.myblock(indexPath.item);
     }
     return attributes;
 //    NSArray

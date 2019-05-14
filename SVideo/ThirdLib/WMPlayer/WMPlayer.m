@@ -541,6 +541,7 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
             self.playOrPauseBtn.selected = NO;
         }else if(self.state ==WMPlayerStateFinished){
             NSLog(@"fffff");
+            [self.player play];
         }
     }
 }
@@ -1199,11 +1200,7 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
         }
     }else{
         LYLog(@"没有滑");
-        //        if (self.topView.hidden) {
-        //            [self controlViewOutHidden];
-        //        }else{
-        //            [self controlViewHidden];
-        //        }
+   
     }
 
 
